@@ -75,7 +75,7 @@ const Tech = () => {
       {/* Interactive 3D Ball Canvas (Preserved visual premium assets) */}
       <div className='mt-20'>
         <p className='text-secondary text-[13px] uppercase tracking-wider font-semibold text-center mb-8'>
-          Interactive Core Technology Orbs (Click & Drag)
+          Core Technology Orbs
         </p>
         <div className='flex flex-row flex-wrap justify-center gap-8'>
           {technologies.map((technology) => (

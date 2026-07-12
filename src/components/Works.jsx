@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Tilt from "react-tilt";
 import { motion } from "framer-motion";
 
@@ -16,15 +16,23 @@ const ProjectCard = ({
   image,
   source_code_link,
   is_private,
+  isMobile,
 }) => {
-  return (
-    <motion.div variants={fadeIn("up", "spring", index * 0.3, 0.75)}>
-      <Tilt
-        options={{
+  const CardContainer = isMobile ? "div" : Tilt;
+  const cardProps = isMobile
+    ? {}
+    : {
+        options: {
           max: 25,
           scale: 1,
           speed: 450,
-        }}
+        },
+      };
+
+  return (
+    <motion.div variants={fadeIn("up", "spring", index * 0.3, 0.75)}>
+      <CardContainer
+        {...cardProps}
         className='bg-tertiary p-5 rounded-2xl sm:w-[360px] w-full flex flex-col justify-between h-full min-h-[460px] shadow-lg border border-secondary/5 hover:border-[#915EFF]/30 transition-all'
       >
         <div>
@@ -74,12 +82,37 @@ const ProjectCard = ({
             </span>
           ))}
         </div>
-      </Tilt>
+      </CardContainer>
     </motion.div>
   );
 };
 
 const Works = () => {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(max-width: 768px)");
+    setIsMobile(mediaQuery.matches);
+
+    const handleMediaQueryChange = (event) => {
+      setIsMobile(event.matches);
+    };
+
+    if (mediaQuery.addEventListener) {
+      mediaQuery.addEventListener("change", handleMediaQueryChange);
+    } else {
+      mediaQuery.addListener(handleMediaQueryChange);
+    }
+
+    return () => {
+      if (mediaQuery.removeEventListener) {
+        mediaQuery.removeEventListener("change", handleMediaQueryChange);
+      } else {
+        mediaQuery.removeListener(handleMediaQueryChange);
+      }
+    };
+  }, []);
+
   return (
     <>
       <motion.div variants={textVariant()}>
@@ -101,11 +134,12 @@ const Works = () => {
 
       <div className='mt-20 flex flex-wrap gap-7'>
         {projects.map((project, index) => (
-          <ProjectCard key={`project-${index}`} index={index} {...project} />
+          <ProjectCard key={`project-${index}`} index={index} isMobile={isMobile} {...project} />
         ))}
       </div>
     </>
   );
 };
 
-export default SectionWrapper(Works, "");
+export default SectionWrapper(Works, "projects");
+

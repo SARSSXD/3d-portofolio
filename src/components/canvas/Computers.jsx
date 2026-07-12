@@ -45,13 +45,27 @@ const ComputersCanvas = () => {
     };
 
     // Add the callback function as a listener for changes to the media query
-    mediaQuery.addEventListener("change", handleMediaQueryChange);
+    if (mediaQuery.addEventListener) {
+      mediaQuery.addEventListener("change", handleMediaQueryChange);
+    } else {
+      mediaQuery.addListener(handleMediaQueryChange);
+    }
 
     // Remove the listener when the component is unmounted
     return () => {
-      mediaQuery.removeEventListener("change", handleMediaQueryChange);
+      if (mediaQuery.removeEventListener) {
+        mediaQuery.removeEventListener("change", handleMediaQueryChange);
+      } else {
+        mediaQuery.removeListener(handleMediaQueryChange);
+      }
     };
   }, []);
+
+  // On mobile screens, skip rendering the 3D Canvas completely to save
+  // bandwidth (don't load desktop_pc/scene.gltf) and reduce WebGL contexts.
+  if (isMobile) {
+    return null;
+  }
 
   return (
     <Canvas
@@ -76,3 +90,4 @@ const ComputersCanvas = () => {
 };
 
 export default ComputersCanvas;
+

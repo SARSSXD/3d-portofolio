@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 
 import { BallCanvas } from "./canvas";
@@ -6,8 +6,34 @@ import { SectionWrapper } from "../hoc";
 import { technologies, categorizedSkills } from "../constants";
 import { textVariant, fadeIn } from "../utils/motion";
 import { styles } from "../styles";
+import ErrorBoundary from "./ErrorBoundary";
 
 const Tech = () => {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(max-width: 768px)");
+    setIsMobile(mediaQuery.matches);
+
+    const handleMediaQueryChange = (event) => {
+      setIsMobile(event.matches);
+    };
+
+    if (mediaQuery.addEventListener) {
+      mediaQuery.addEventListener("change", handleMediaQueryChange);
+    } else {
+      mediaQuery.addListener(handleMediaQueryChange);
+    }
+
+    return () => {
+      if (mediaQuery.removeEventListener) {
+        mediaQuery.removeEventListener("change", handleMediaQueryChange);
+      } else {
+        mediaQuery.removeListener(handleMediaQueryChange);
+      }
+    };
+  }, []);
+
   return (
     <>
       <motion.div variants={textVariant()}>
@@ -54,7 +80,21 @@ const Tech = () => {
         <div className='flex flex-row flex-wrap justify-center gap-8'>
           {technologies.map((technology) => (
             <div className='w-20 h-20 sm:w-24 sm:h-24' key={technology.name} title={technology.name}>
-              <BallCanvas icon={technology.icon} />
+              {isMobile ? (
+                <div className='w-full h-full rounded-full bg-[#fff8eb] flex justify-center items-center shadow-md border-4 border-secondary/20 hover:border-[#915EFF]/40 transition-all'>
+                  <img src={technology.icon} alt={technology.name} className='w-12 h-12 object-contain' />
+                </div>
+              ) : (
+                <ErrorBoundary
+                  fallback={
+                    <div className='w-full h-full rounded-full bg-[#fff8eb] flex justify-center items-center shadow-md border-4 border-secondary/20'>
+                      <img src={technology.icon} alt={technology.name} className='w-12 h-12 object-contain' />
+                    </div>
+                  }
+                >
+                  <BallCanvas icon={technology.icon} />
+                </ErrorBoundary>
+              )}
             </div>
           ))}
         </div>
@@ -64,3 +104,4 @@ const Tech = () => {
 };
 
 export default SectionWrapper(Tech, "tech");
+

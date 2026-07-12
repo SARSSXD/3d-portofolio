@@ -9,7 +9,7 @@ import Works from "./Works";
 import Achievements from "./Achievements";
 import Contact from "./Contact";
 import CanvasLoader from "./Loader";
-
+import ErrorBoundary from "./ErrorBoundary";
 
 export {
   Hero,
@@ -22,8 +22,10 @@ export {
   Achievements,
   Contact,
   CanvasLoader,
+  ErrorBoundary,
   EarthCanvas, 
   BallCanvas, 
   ComputersCanvas, 
   StarsCanvas
 };
+

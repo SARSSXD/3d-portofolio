@@ -6,6 +6,7 @@ import { styles } from "../styles";
 import { EarthCanvas } from "./canvas";
 import { SectionWrapper } from "../hoc";
 import { slideIn } from "../utils/motion";
+import ErrorBoundary from "./ErrorBoundary";
 
 const Contact = () => {
   const formRef = useRef();
@@ -167,7 +168,13 @@ const Contact = () => {
           variants={slideIn("right", "tween", 0.2, 1)}
           className='xl:flex-1 xl:h-auto md:h-[550px] h-[350px]'
         >
-          <EarthCanvas />
+          <ErrorBoundary fallback={
+            <div className="w-full h-full flex justify-center items-center">
+              <p className="text-secondary text-[16px] italic">Failed to load 3D Earth. Form is still active.</p>
+            </div>
+          }>
+            <EarthCanvas />
+          </ErrorBoundary>
         </motion.div>
       </div>
 

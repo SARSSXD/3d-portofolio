@@ -5,7 +5,7 @@ import { ComputersCanvas } from "./canvas";
 
 const Hero = () => {
   return (
-    <section className={`relative w-full h-screen mx-auto flex flex-col`}>
+    <section className={`relative w-full sm:h-screen h-auto min-h-screen mx-auto flex flex-col pb-16 sm:pb-0`}>
       <div
         className={`max-w-7xl mx-auto ${styles.paddingX} flex flex-row items-start gap-5 sm:pt-[120px] pt-[90px]`}
       >
@@ -41,9 +41,10 @@ const Hero = () => {
         </div>
       </div>
 
-      <div className="w-full flex-1 min-h-[300px]">
+      <div className="w-full flex-1 min-h-[300px] hidden sm:block">
         <ComputersCanvas />
       </div>
+
 
       <div className='absolute bottom-5 sm:right-16 right-6 flex justify-end items-center z-10 pointer-events-none'>
         <a href='#about' className="pointer-events-auto">

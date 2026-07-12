@@ -5,13 +5,13 @@ import { ComputersCanvas } from "./canvas";
 
 const Hero = () => {
   return (
-    <section className={`relative w-full h-screen mx-auto`}>
+    <section className={`relative w-full h-screen mx-auto flex flex-col`}>
       <div
-        className={`absolute inset-0 top-[120px]  max-w-7xl mx-auto ${styles.paddingX} flex flex-row items-start gap-5`}
+        className={`max-w-7xl mx-auto ${styles.paddingX} flex flex-row items-start gap-5 sm:pt-[120px] pt-[90px]`}
       >
         <div className='flex flex-col justify-center items-center mt-5'>
           <div className='w-5 h-5 rounded-full bg-[#915EFF]' />
-          <div className='w-1 sm:h-80 h-40 violet-gradient' />
+          <div className='w-1 sm:h-40 h-20 violet-gradient' />
         </div>
 
         <div>
@@ -24,27 +24,29 @@ const Hero = () => {
           </p>
 
           {/* Recruiter Statistics Badges */}
-          <div className='mt-8 flex flex-wrap gap-4'>
-            <div className='bg-tertiary/60 backdrop-blur-sm border border-secondary/20 rounded-xl px-4 py-2.5 flex flex-col justify-center min-w-[130px] shadow-lg'>
-              <span className='text-[#915EFF] text-[20px] font-bold sm:text-[24px]'>2+</span>
-              <span className='text-secondary text-[11px] uppercase tracking-wider font-semibold mt-0.5'>Professional Roles</span>
+          <div className='mt-6 flex flex-wrap gap-3 sm:gap-4'>
+            <div className='bg-tertiary/60 backdrop-blur-sm border border-secondary/20 rounded-xl sm:px-4 px-3 sm:py-2.5 py-1.5 flex flex-col justify-center sm:min-w-[130px] min-w-[100px] shadow-lg'>
+              <span className='text-[#915EFF] text-[18px] sm:text-[24px] font-bold'>2+</span>
+              <span className='text-secondary text-[9px] sm:text-[11px] uppercase tracking-wider font-semibold mt-0.5'>Professional Roles</span>
             </div>
-            <div className='bg-tertiary/60 backdrop-blur-sm border border-secondary/20 rounded-xl px-4 py-2.5 flex flex-col justify-center min-w-[130px] shadow-lg'>
-              <span className='text-[#915EFF] text-[20px] font-bold sm:text-[24px]'>20+</span>
-              <span className='text-secondary text-[11px] uppercase tracking-wider font-semibold mt-0.5'>Features Delivered</span>
+            <div className='bg-tertiary/60 backdrop-blur-sm border border-secondary/20 rounded-xl sm:px-4 px-3 sm:py-2.5 py-1.5 flex flex-col justify-center sm:min-w-[130px] min-w-[100px] shadow-lg'>
+              <span className='text-[#915EFF] text-[18px] sm:text-[24px] font-bold'>20+</span>
+              <span className='text-secondary text-[9px] sm:text-[11px] uppercase tracking-wider font-semibold mt-0.5'>Features Delivered</span>
             </div>
-            <div className='bg-tertiary/60 backdrop-blur-sm border border-secondary/20 rounded-xl px-4 py-2.5 flex flex-col justify-center min-w-[130px] shadow-lg'>
-              <span className='text-white font-bold text-[16px] sm:text-[18px]'>Flutter &bull; Laravel</span>
-              <span className='text-secondary text-[11px] uppercase tracking-wider font-semibold mt-1.5'>Core Tech Stack</span>
+            <div className='bg-tertiary/60 backdrop-blur-sm border border-secondary/20 rounded-xl sm:px-4 px-3 sm:py-2.5 py-1.5 flex flex-col justify-center sm:min-w-[130px] min-w-[100px] shadow-lg'>
+              <span className='text-white font-bold text-[14px] sm:text-[18px]'>Flutter &bull; Laravel</span>
+              <span className='text-secondary text-[9px] sm:text-[11px] uppercase tracking-wider font-semibold mt-1'>Core Tech Stack</span>
             </div>
           </div>
         </div>
       </div>
 
-      <ComputersCanvas />
+      <div className="w-full flex-1 min-h-[300px]">
+        <ComputersCanvas />
+      </div>
 
-      <div className='absolute xs:bottom-10 bottom-32 w-full flex justify-center items-center'>
-        <a href='#about'>
+      <div className='absolute bottom-5 sm:right-16 right-6 flex justify-end items-center z-10 pointer-events-none'>
+        <a href='#about' className="pointer-events-auto">
           <div className='w-[35px] h-[64px] rounded-3xl border-4 border-secondary flex justify-center items-start p-2'>
             <motion.div
               animate={{

@@ -1,6 +1,6 @@
 # 3D Developer Portfolio - Kautsar Quraisy Al Hamidy
 
-Welcome to my 3D Developer Portfolio website! This is an interactive, fully responsive 3D web application designed to showcase my skills, experience, and projects as a Fullstack Engineer.
+Welcome to my 3D Developer Portfolio website! This is an interactive, fully responsive 3D web application designed to showcase my skills, experience, and projects as a Fullstack Developer.
 
 The application features premium 3D graphics, rich animations, and a modern sleek dark UI.
 

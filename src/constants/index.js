@@ -307,14 +307,14 @@ const achievements = [
     issuer: "National Applied Science Project Olympiad (NASPO)",
     year: "2020",
     description: "Awarded national bronze medal for presenting innovative applied science solutions.",
-    icon: "https://upload.wikimedia.org/wikipedia/commons/5/51/Pok%C3%A9mon_GO_Bronze_Medal.png",
+    icon: "https://www.flaticon.com/free-icons/bronze",
   },
   {
     title: "Best Participant",
     issuer: "Laravel Bootcamp",
     year: "2023",
     description: "Recognized as the overall best participant during intensive Laravel backend training.",
-    icon: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Gold_Medal.svg/1200px-Gold_Medal.svg.png",
+    icon: "https://www.flaticon.com/free-icons/best-seller",
   },
 ];
 
@@ -328,7 +328,7 @@ const projects = [
       { name: "android", color: "pink-text-gradient" },
     ],
     image: pos_system,
-    source_code_link: "https://github.com/SARSSXD",
+    source_code_link: "https://github.com/SARSSXD/blaundry-frontend",
     is_private: true,
   },
   {
@@ -340,7 +340,7 @@ const projects = [
       { name: "rest-api", color: "pink-text-gradient" },
     ],
     image: midtrans,
-    source_code_link: "https://github.com/SARSSXD",
+    source_code_link: "https://github.com/SARSSXD/blaundry-backend",
     is_private: true,
   },
   {
@@ -352,7 +352,7 @@ const projects = [
       { name: "iot", color: "pink-text-gradient" },
     ],
     image: iot_scale,
-    source_code_link: "https://github.com/SARSSXD",
+    source_code_link: "https://github.com/SARSSXD/blaundry-backend",
     is_private: true,
   },
   {
